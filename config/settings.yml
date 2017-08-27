@@ -1,0 +1,4 @@
+plugins:
+  layouts_custom_html:
+    default: ''
+    client: true
