@@ -4,5 +4,5 @@
 # authors: Angus McLeod
 
 after_initialize do
-  DiscourseLayouts::WidgetHelper.add_widget('custom-html')
+  DiscourseLayouts::WidgetHelper.add_widget('custom-html', position: 'right', order: '1')
 end
