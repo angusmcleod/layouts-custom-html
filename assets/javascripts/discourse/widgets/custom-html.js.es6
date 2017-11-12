@@ -1,13 +1,22 @@
 import { createWidget } from 'discourse/widgets/widget';
-import RawHtml from 'discourse/widgets/raw-html';
 
 export default createWidget('custom-html', {
   tagName: 'div.custom-html.widget-container',
+  buildKey: () => 'custom-html',
 
-  html() {
-    Ember.run.scheduleOnce('afterRender', this, function() {
-      $("div.custom-html").append(`<div>${this.siteSettings.layouts_custom_html}</div>`)
-    })
+  defaultState() {
+    return {
+      renderScheduled: false
+    };
+  },
+
+  html(attrs, state) {
+    if (!state.renderScheduled) {
+      Ember.run.scheduleOnce('afterRender', this, function() {
+        $("div.custom-html").append(`<div class='contents'>${this.siteSettings.layouts_custom_html}</div>`);
+      });
+      state.renderScheduled = true;
+    }
     return '';
   }
-})
+});
