@@ -3,6 +3,6 @@
 # version: 0.1
 # authors: Angus McLeod
 
-after_initialize do
+DiscourseEvent.on(:layouts_ready) do
   DiscourseLayouts::WidgetHelper.add_widget('custom-html', position: 'right', order: '1')
 end
