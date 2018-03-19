@@ -6,3 +6,7 @@
 DiscourseEvent.on(:layouts_ready) do
   DiscourseLayouts::WidgetHelper.add_widget('custom-html', position: 'right', order: '1')
 end
+
+after_initialize do
+  add_to_serializer(:basic_category, :layouts_custom_html) { object.custom_fields['layouts_custom_html'] }
+end

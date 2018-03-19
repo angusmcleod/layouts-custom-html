@@ -12,8 +12,15 @@ export default createWidget('custom-html', {
 
   html(attrs, state) {
     if (!state.renderScheduled) {
+      let html = this.siteSettings.layouts_custom_html;
+
+      const category = attrs.category;
+      if (category && category.layouts_custom_html) {
+        html = category.layouts_custom_html;
+      }
+
       Ember.run.scheduleOnce('afterRender', this, function() {
-        $("div.custom-html").append(`<div class='contents'>${this.siteSettings.layouts_custom_html}</div>`);
+        $("div.custom-html").append(`<div class='contents'>${html}</div>`);
       });
       state.renderScheduled = true;
     }
