@@ -4,7 +4,7 @@
 # authors: Angus McLeod
 
 DiscourseEvent.on(:layouts_ready) do
-  DiscourseLayouts::WidgetHelper.add_widget('custom-html', position: 'right', order: '1')
+  DiscourseLayouts::Widget.add('custom-html', position: 'right', order: '1')
 end
 
 after_initialize do
