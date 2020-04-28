@@ -1,6 +1,6 @@
 # name: layouts-custom-html
 # about: A custom html widget for use with Discourse Layouts
-# version: 0.1
+# version: 0.2
 # authors: Angus McLeod
 
 DiscourseEvent.on(:layouts_ready) do
