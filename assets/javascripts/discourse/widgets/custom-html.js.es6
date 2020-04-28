@@ -1,7 +1,16 @@
-import { createLayoutsWidget } from 'discourse/plugins/discourse-layouts/discourse/lib/layouts';
 import { scheduleOnce } from "@ember/runloop";
 
-export default createLayoutsWidget('custom-html', {
+let layoutsError;
+let layouts;
+
+try {
+  layouts = requirejs('discourse/plugins/discourse-layouts/discourse/lib/layouts');
+} catch(error) {
+  layouts = { createLayoutsWidget: createWidget };
+  console.error(error);
+}
+
+export default layouts.createLayoutsWidget('custom-html', {
   defaultState() {
     return {
       renderScheduled: false
