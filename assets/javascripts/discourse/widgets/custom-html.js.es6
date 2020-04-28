@@ -1,9 +1,7 @@
-import { createWidget } from 'discourse/widgets/widget';
+import { createLayoutsWidget } from 'discourse/plugins/discourse-layouts/discourse/lib/layouts';
+import { scheduleOnce } from "@ember/runloop";
 
-export default createWidget('custom-html', {
-  tagName: 'div.custom-html.widget-container',
-  buildKey: () => 'custom-html',
-
+export default createLayoutsWidget('custom-html', {
   defaultState() {
     return {
       renderScheduled: false
@@ -19,7 +17,7 @@ export default createWidget('custom-html', {
         html = category.layouts_custom_html;
       }
 
-      Ember.run.scheduleOnce('afterRender', this, function() {
+      scheduleOnce('afterRender', this, function() {
         $("div.custom-html").append(`<div class='contents'>${html}</div>`);
       });
       state.renderScheduled = true;
