@@ -1,4 +1,5 @@
 import { scheduleOnce } from "@ember/runloop";
+import { createWidget } from 'discourse/widgets/widget';
 
 let layoutsError;
 let layouts;
