@@ -28,7 +28,7 @@ export default layouts.createLayoutsWidget('custom-html', {
       }
 
       scheduleOnce('afterRender', this, function() {
-        $("div.custom-html").append(`<div class='contents'>${html}</div>`);
+        $("div.layouts-custom-html").append(`<div class='contents'>${html}</div>`);
       });
       state.renderScheduled = true;
     }
